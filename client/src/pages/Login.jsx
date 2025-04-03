@@ -41,11 +41,48 @@ const Login = () => {
 
     return (
      <section className={"flex justify-center items-center w-full"}>
-         <Tabs defaultValue="account" className="w-[400px]">
+         <Tabs defaultValue="login" className="w-[400px]">
              <TabsList className="grid w-full grid-cols-2">
-                 <TabsTrigger value="singUp">sing up </TabsTrigger>
                  <TabsTrigger value="login">Login</TabsTrigger>
+                 <TabsTrigger value="singUp">sing up </TabsTrigger>
              </TabsList>
+             <TabsContent value="login">
+                 <Card>
+                     <CardHeader>
+                         <CardTitle>Login</CardTitle>
+                         <CardDescription>
+                             Login with your password here. After signup, you'll be logged in.
+                         </CardDescription>
+                     </CardHeader>
+                     <CardContent className="space-y-2">
+                         <div className="space-y-1">
+                             <Label htmlFor="username">Email</Label>
+                             <Input
+                                 name="email"
+                                 value={loginInput.email}
+                                 onChange={(e)=>changeInputHandler(e, "login")}
+                                 type="email"
+                                 placeholder="YourEmail@.com"
+                                 required
+                             />
+                         </div>
+                         <div className="space-y-1">
+                             <Label htmlFor="password">password</Label>
+                             <Input
+                                 name={"password"}
+                                 value={loginInput.password}
+                                 onChange={(e)=>changeInputHandler(e,"login")}
+                                 type="password"
+                                 placeholder="*****"
+                                 required
+                             />
+                         </div>
+                     </CardContent>
+                     <CardFooter>
+                         <Button onClick={()=> handleRegistetion("login")}>Login</Button>
+                     </CardFooter>
+                 </Card>
+             </TabsContent>
              <TabsContent value="singUp">
                  <Card>
                      <CardHeader>
@@ -93,43 +130,7 @@ const Login = () => {
                      </CardFooter>
                  </Card>
              </TabsContent>
-             <TabsContent value="login">
-                 <Card>
-                     <CardHeader>
-                         <CardTitle>Login</CardTitle>
-                         <CardDescription>
-                             Login with your password here. After signup, you'll be logged in.
-                         </CardDescription>
-                     </CardHeader>
-                     <CardContent className="space-y-2">
-                         <div className="space-y-1">
-                             <Label htmlFor="username">Email</Label>
-                             <Input
-                                 name="email"
-                                 value={loginInput.email}
-                                 onChange={(e)=>changeInputHandler(e, "login")}
-                                 type="email"
-                                 placeholder="YourEmail@.com"
-                                 required
-                             />
-                         </div>
-                         <div className="space-y-1">
-                             <Label htmlFor="password">password</Label>
-                             <Input
-                                 name={"password"}
-                                 value={loginInput.password}
-                                 onChange={(e)=>changeInputHandler(e,"login")}
-                                 type="password"
-                                 placeholder="*****"
-                                 required
-                             />
-                         </div>
-                     </CardContent>
-                     <CardFooter>
-                         <Button onClick={()=> handleRegistetion("login")}>Login</Button>
-                     </CardFooter>
-                 </Card>
-             </TabsContent>
+
          </Tabs>
      </section>
     )
